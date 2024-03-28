@@ -14,13 +14,35 @@ return {
     end,
   },
   {
+    'nvimdev/lspsaga.nvim',
+    event = "LspAttach",
+    ft = {"typescript"},
+    config = function()
+      require('lspsaga').setup({
+        border_style = 'rounded'
+      })
+    end,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter', -- optional
+      'nvim-tree/nvim-web-devicons'     -- optional
+    }
+  },
+  {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
         "lua-language-server", "stylua",
         "html-lsp", "css-lsp" , "prettier", "typescript-language-server",
-        "eslint-lsp"
+        "eslint-lsp", "tailwindcss-language-server"
       },
+    },
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    opts = {
+      ensure_installed = {
+        "tailwindcss"
+      }
     },
   },
   {
