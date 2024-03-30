@@ -24,9 +24,16 @@ require("lazy").setup({
       require "options"
     end,
   },
-
   { import = "plugins" },
 }, lazy_config)
+
+require('telescope').setup({
+  defaults = {
+    file_ignore_patterns = { "^./.git/", "^node_modules/", "^vendor/", "^assets/", "^android/", "^ios/", "%.g.dart"},
+  }
+})
+
+require('flutter-tools').setup({})
 
 -- load theme
 dofile(vim.g.base46_cache .. "defaults")
